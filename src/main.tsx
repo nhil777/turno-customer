@@ -11,6 +11,7 @@ import { Login } from './pages/Login';
 import { ProtectedRoute } from './ProtectedRoute';
 import { Home } from './pages/Home';
 import { DepositList } from './pages/DepositList';
+import { OrderList } from './pages/OrderList';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <ProtectedRoute element={<Home />} /> },
       { path: '/deposits', element: <ProtectedRoute element={<DepositList />} />},
+      { path: '/orders', element: <ProtectedRoute element={<OrderList />} />},
       { path: 'login', element: <Login /> },
     ],
   },
