@@ -9,7 +9,7 @@ interface User {
 
 export interface Deposit {
     id?: number;
-    image: string;
+    image: File;
     amount: number;
     status?: 'rejected' | 'approved' | 'waiting_approval';
     user_id?: number;

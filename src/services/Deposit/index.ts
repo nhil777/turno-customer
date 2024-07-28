@@ -8,9 +8,16 @@ export const list = async (): Promise<Deposit[]> => {
 }
 
 export const deposit = async ({ amount, image }: Deposit): Promise<Deposit> => {
-    const response = await API.post('deposit', {
-        amount,
-        image,
+    const formData = new FormData();
+    formData.append('amount', amount.toString());
+
+    const file = image instanceof FileList ? image[0] : image;
+    formData.append('image', file);
+
+    const response = await API.post('deposit', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
     });
 
     return response.data;
