@@ -4,23 +4,23 @@ import { RegisterForm } from '../../components/RegisterForm';
 import { RegisterData } from '../../components/RegisterForm/types';
 import { register } from '../../services/Auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 export const Register = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const onSubmit: SubmitHandler<RegisterData> = async (data) => {
+    setIsLoading(true);
+
     const { name, email, password } = data;
 
-    const success = await register({ name, email, password });
+    register({ name, email, password })
+      .then(() => navigate('/'))
+      .catch(error => alert(error.response.data.message))
+      .finally(() => setIsLoading(false));
+    };
 
-    if (!success) {
-      alert('Register failed');
-      return;
-    }
-
-    navigate('/');
-  };
-
-  return (
+  return isLoading ? <p>Loading</p> : (
     <FormContainer>
         <FormTitle>Turno Customer</FormTitle>
         <RegisterForm onSubmit={onSubmit} />
