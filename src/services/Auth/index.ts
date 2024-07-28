@@ -1,10 +1,20 @@
 import { LoginData } from '../../components/LoginForm/types';
+import { RegisterData } from '../../components/RegisterForm/types';
 import API from '../Api';
 
 const TOKEN_KEY = 'turno';
 
 export const isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null;
 export const getToken = () => localStorage.getItem(TOKEN_KEY);
+
+export const register = async (registerData: RegisterData): Promise<boolean> => {
+    const { data: response } = await API.post('/register', registerData);
+    const token = response.data.token;
+
+    localStorage.setItem(TOKEN_KEY, token);
+
+    return true;
+};
 
 export const login = async (loginData: LoginData): Promise<boolean> => {
     const { data: response } = await API.post('/login', loginData);

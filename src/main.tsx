@@ -14,6 +14,7 @@ import { DepositList } from './pages/DepositList';
 import { OrderList } from './pages/OrderList';
 import { Purchase } from './pages/Purchase';
 import { Deposit } from './pages/Deposit';
+import { Register } from './pages/Register';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       { path: '/orders', element: <ProtectedRoute element={<OrderList />} />},
       { path: '/purchase', element: <ProtectedRoute element={<Purchase />} />},
       { path: 'login', element: <Login /> },
+      { path: 'register', element: <Register /> },
     ],
   },
 ]);

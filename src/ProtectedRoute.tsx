@@ -7,5 +7,5 @@ interface ProtectedRouteI {
 }
 
 export const ProtectedRoute = ({ element }: ProtectedRouteI) => {
-  return isAuthenticated() ? element : <Navigate to="/login" />;
+  return isAuthenticated() ? element : <Navigate to="/register" />;
 };
