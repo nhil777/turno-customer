@@ -15,6 +15,7 @@ import { OrderList } from './pages/OrderList';
 import { Purchase } from './pages/Purchase';
 import { Deposit } from './pages/Deposit';
 import { Register } from './pages/Register';
+import { AuthProvider } from './contexts/AuthContext';
 
 const router = createBrowserRouter([
   {
@@ -23,10 +24,10 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: '/', element: <ProtectedRoute element={<Home />} /> },
-      { path: '/deposit', element: <ProtectedRoute element={<Deposit />} />},
-      { path: '/deposits', element: <ProtectedRoute element={<DepositList />} />},
-      { path: '/orders', element: <ProtectedRoute element={<OrderList />} />},
-      { path: '/purchase', element: <ProtectedRoute element={<Purchase />} />},
+      { path: '/add-check', element: <ProtectedRoute element={<Deposit />} />},
+      { path: '/checks', element: <ProtectedRoute element={<DepositList />} />},
+      { path: '/expenses', element: <ProtectedRoute element={<OrderList />} />},
+      { path: '/add-expense', element: <ProtectedRoute element={<Purchase />} />},
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
     ],
@@ -35,6 +36,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )

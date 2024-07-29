@@ -5,6 +5,7 @@ import { RegisterData } from '../../components/RegisterForm/types';
 import { register } from '../../services/Auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export const Register = () => {
 
     register({ name, email, password })
       .then(() => navigate('/'))
-      .catch(error => alert(error.response.data.message))
+      .catch(error => toast.error(error.response.data.message))
       .finally(() => setIsLoading(false));
     };
 

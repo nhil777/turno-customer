@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Profile } from "../../services/Profile/types";
 import { index } from "../../services/Profile";
 import { fromCents } from "../../Helper";
+import { toast } from "react-toastify";
 
 export const Home = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -10,7 +11,7 @@ export const Home = () => {
     useEffect(() => {
         index()
             .then(profile => setProfile(profile))
-            .catch(() => alert('Error fetching profile, refresh the page and try again'))
+            .catch(() => toast.error('Error fetching profile, refresh the page and try again'))
             .finally(() => setIsLoading(false));
     }, []);
 

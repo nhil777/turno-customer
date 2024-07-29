@@ -4,6 +4,7 @@ import { PurchaseData } from '../../components/PurchaseForm/types';
 import { PurchaseForm } from '../../components/PurchaseForm';
 import { useNavigate } from 'react-router-dom';
 import { toCents } from '../../Helper';
+import { toast } from 'react-toastify';
 
 export const Purchase = () => {
     const navigate = useNavigate();
@@ -12,11 +13,11 @@ export const Purchase = () => {
 
         purchase({ amount: toCents(amount), description })
             .then(() => {
-                alert('Purchase successful');
-                navigate('/orders');
+                toast.success('Purchase successful');
+                navigate('/expenses');
             })
             .catch(error => {
-                alert(error.response.data.message);
+                toast.error(error.response.data.message);
             });
     };
 

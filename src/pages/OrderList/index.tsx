@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
-import { convertDateString, formatAmount } from "../../Helper";
 import { list } from "../../services/Order";
 import { Order } from "../../services/Order/types";
+import { Spinner } from "../../components/Spinner";
+import { toast } from "react-toastify";
+import { OrderTable } from "../../components/OrderTable";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export const OrderList = () => {
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [orders, setOrders] = useState<Order[]>([]);
 
@@ -11,7 +16,7 @@ export const OrderList = () => {
         list().then(response => {
             setOrders(response);
         }).catch(() => {
-            alert('Error fetching orders, refresh the page and try again');
+            toast.error('Error fetching orders, refresh the page and try again');
         }).finally(() => setIsLoading(false));
     }
 
@@ -19,17 +24,12 @@ export const OrderList = () => {
         getOrders();
     }, []);
 
-    return isLoading ? <p>Loading</p> : (
-        orders.map(order => {
-            return (
-                <tr>
-                    <td>
-                        <strong>{order.description}</strong>
-                        <p>{convertDateString(order.created_at!)}</p>
-                    </td>
-                    <td>${formatAmount(order.amount)}</td>
-                </tr>
-            )
-        })
+    return isLoading ? <Spinner /> : (
+        <>
+            <OrderTable orders={orders} />;
+            <div className="d-flex justify-content-center">
+                <Button className="float-right" onClick={() => navigate('/add-expense')}>Add Expense</Button>
+            </div>
+        </>
     );
 };

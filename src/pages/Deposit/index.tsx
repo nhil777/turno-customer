@@ -4,6 +4,7 @@ import { deposit } from "../../services/Deposit";
 import { toCents } from "../../Helper";
 import { DepositData } from "../../components/DepositForm/types";
 import { DepositForm } from "../../components/DepositForm";
+import { toast } from "react-toastify";
 
 export const Deposit = () => {
     const navigate = useNavigate();
@@ -12,11 +13,11 @@ export const Deposit = () => {
 
         deposit({ amount: toCents(amount), image })
             .then(() => {
-                alert('Deposit successful');
-                navigate('/deposits');
+                toast.success('Deposit successful');
+                navigate('/checks');
             })
             .catch(error => {
-                alert(error.response.data.message);
+                toast.error(error.response.data.message);
             });
     };
 

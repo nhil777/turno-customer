@@ -4,7 +4,7 @@ import API from '../Api';
 
 const TOKEN_KEY = 'turno';
 
-export const isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null;
+export const checkAuthStatus = () => localStorage.getItem(TOKEN_KEY) !== null;
 export const getToken = () => localStorage.getItem(TOKEN_KEY);
 
 export const register = async (registerData: RegisterData): Promise<boolean> => {
