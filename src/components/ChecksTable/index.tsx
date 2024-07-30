@@ -1,13 +1,13 @@
 import { Table } from "react-bootstrap";
-import { DepositRow } from "../DepositRow";
-import { DepositTableProps } from "./types";
+import { CheckRow } from "../CheckRow";
+import { ChecksTableProps } from "./types";
 
-export const DepositTable = ({ deposits }: DepositTableProps) => {
+export const ChecksTable = ({ deposits }: ChecksTableProps) => {
     return (
         <Table striped bordered hover>
           <tbody>
             {deposits.map((deposit, index) => (
-              <DepositRow key={index} deposit={deposit} />
+              <CheckRow key={index} deposit={deposit} />
             ))}
           </tbody>
         </Table>

@@ -1,5 +1,5 @@
 import { Order } from "../../services/Order/types";
 
-export interface OrderRowProps {
+export interface ExpenseRowProps {
     order: Order;
 }

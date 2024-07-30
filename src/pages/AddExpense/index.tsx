@@ -1,14 +1,14 @@
 import { SubmitHandler } from 'react-hook-form';
 import { purchase } from '../../services/Order';
-import { PurchaseData } from '../../components/PurchaseForm/types';
-import { PurchaseForm } from '../../components/PurchaseForm';
+import { Purchase } from '../../components/ExpenseForm/types';
+import { ExpenseForm } from '../../components/ExpenseForm';
 import { useNavigate } from 'react-router-dom';
 import { toCents } from '../../Helper';
 import { toast } from 'react-toastify';
 
-export const Purchase = () => {
+export const AddExpense = () => {
     const navigate = useNavigate();
-    const onSubmit: SubmitHandler<PurchaseData> = async (data) => {
+    const onSubmit: SubmitHandler<Purchase> = async (data) => {
         const { amount, description } = data;
 
         purchase({ amount: toCents(amount), description })
@@ -21,5 +21,5 @@ export const Purchase = () => {
             });
     };
 
-  return <PurchaseForm onSubmit={onSubmit} />
+  return <ExpenseForm onSubmit={onSubmit} />
 };

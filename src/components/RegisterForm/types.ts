@@ -1,11 +1,11 @@
 import { SubmitHandler } from "react-hook-form";
 
-export type RegisterData = {
+export type Register = {
     name: string;
     email: string;
     password: string;
 }
 
-export interface RegisterFormI {
-    onSubmit: SubmitHandler<RegisterData>;
+export interface RegisterFormProps {
+    onSubmit: SubmitHandler<Register>;
 }

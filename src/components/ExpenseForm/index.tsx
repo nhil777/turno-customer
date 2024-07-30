@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form';
-import { PurchaseData, PurchaseFormI } from './types';
+import { Purchase, PurchaseFormProps } from './types';
 import { Form, Button } from 'react-bootstrap';
 
-export const PurchaseForm = ({ onSubmit }: PurchaseFormI) => {
-  const { register, handleSubmit, formState: { errors } } = useForm<PurchaseData>();
+export const ExpenseForm = ({ onSubmit }: PurchaseFormProps) => {
+  const { register, handleSubmit, formState: { errors } } = useForm<Purchase>();
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>

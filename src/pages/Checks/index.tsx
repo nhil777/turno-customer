@@ -3,11 +3,12 @@ import { Deposit } from "../../services/Deposit/types";
 import { list } from "../../services/Deposit";
 import { Spinner } from "../../components/Spinner";
 import { toast } from "react-toastify";
-import { DepositTable } from "../../components/DepositTable";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { CenteredContainer } from "../../components/CenteredContainer";
+import { ChecksTable } from "../../components/ChecksTable";
 
-export const DepositList = () => {
+export const Checks = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [deposits, setDeposits] = useState<Deposit[]>([]);
@@ -26,11 +27,11 @@ export const DepositList = () => {
 
     return isLoading ? <Spinner /> : (
         <>
-            <DepositTable deposits={deposits} />
+            <ChecksTable deposits={deposits} />
 
-            <div className="d-flex justify-content-center">
+            <CenteredContainer>
                 <Button className="float-right" onClick={() => navigate('/add-check')}>Add Check</Button>
-            </div>
+            </CenteredContainer>
         </>
     );
 };

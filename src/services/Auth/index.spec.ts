@@ -1,6 +1,6 @@
 import { register, login, logout, checkAuthStatus, getToken } from './index';
-import { LoginData } from '../../components/LoginForm/types';
-import { RegisterData } from '../../components/RegisterForm/types';
+import { Register as RegisterType } from '../../components/RegisterForm/types';
+import { Login as LoginType } from '../../components/LoginForm/types';
 import API from '../Api';
 import MockAdapter from 'axios-mock-adapter';
 
@@ -38,7 +38,7 @@ describe('Auth service', () => {
     });
 
     it('should register and set token in localStorage', async () => {
-        const registerData: RegisterData = { name: 'Jest Unit', password: 'password', email: 'jest@unit.test' };
+        const registerData: RegisterType = { name: 'Jest Unit', password: 'password', email: 'jest@unit.test' };
         const mockResponse = { data: { token: mockToken } };
 
         mock.onPost('/register').reply(200, mockResponse);
@@ -50,7 +50,7 @@ describe('Auth service', () => {
     });
 
     it('should login and set token in localStorage', async () => {
-        const loginData: LoginData = { email: 'jest@unit.test', password: 'password' };
+        const loginData: LoginType = { email: 'jest@unit.test', password: 'password' };
         const mockResponse = { data: { token: mockToken } };
 
         mock.onPost('/login').reply(200, mockResponse);

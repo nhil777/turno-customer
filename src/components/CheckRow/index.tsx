@@ -1,7 +1,7 @@
 import { convertDateString, formatAmount } from "../../Helper";
-import { DepositRowProps } from "./types";
+import { CheckRowProps } from "./types";
 
-export const DepositRow = ({ deposit }: DepositRowProps) => {
+export const CheckRow = ({ deposit }: CheckRowProps) => {
     return (
         <tr>
             <td>

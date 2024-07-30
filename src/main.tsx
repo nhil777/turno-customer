@@ -10,12 +10,12 @@ import ErrorPage from './pages/Error';
 import { Login } from './pages/Login';
 import { ProtectedRoute } from './ProtectedRoute';
 import { Home } from './pages/Home';
-import { DepositList } from './pages/DepositList';
-import { OrderList } from './pages/OrderList';
-import { Purchase } from './pages/Purchase';
-import { Deposit } from './pages/Deposit';
+import { Checks } from './pages/Checks';
+import { Expenses } from './pages/Expenses';
+import { AddExpense } from './pages/AddExpense';
+import { AddCheck } from './pages/AddCheck';
 import { Register } from './pages/Register';
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/Auth';
 
 const router = createBrowserRouter([
   {
@@ -24,10 +24,10 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: '/', element: <ProtectedRoute element={<Home />} /> },
-      { path: '/add-check', element: <ProtectedRoute element={<Deposit />} />},
-      { path: '/checks', element: <ProtectedRoute element={<DepositList />} />},
-      { path: '/expenses', element: <ProtectedRoute element={<OrderList />} />},
-      { path: '/add-expense', element: <ProtectedRoute element={<Purchase />} />},
+      { path: '/add-check', element: <ProtectedRoute element={<AddCheck />} />},
+      { path: '/checks', element: <ProtectedRoute element={<Checks />} />},
+      { path: '/expenses', element: <ProtectedRoute element={<Expenses />} />},
+      { path: '/add-expense', element: <ProtectedRoute element={<AddExpense />} />},
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
     ],

@@ -2,13 +2,13 @@ import { SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { deposit } from "../../services/Deposit";
 import { toCents } from "../../Helper";
-import { DepositData } from "../../components/DepositForm/types";
-import { DepositForm } from "../../components/DepositForm";
+import { Deposit as DepositType } from "../../components/AddCheckForm/types";
 import { toast } from "react-toastify";
+import { AddCheckForm } from "../../components/AddCheckForm";
 
-export const Deposit = () => {
+export const AddCheck = () => {
     const navigate = useNavigate();
-    const onSubmit: SubmitHandler<DepositData> = async (data) => {
+    const onSubmit: SubmitHandler<DepositType> = async (data) => {
         const { amount, image } = data;
 
         deposit({ amount: toCents(amount), image })
@@ -21,5 +21,5 @@ export const Deposit = () => {
             });
     };
 
-  return <DepositForm onSubmit={onSubmit} />
+  return <AddCheckForm onSubmit={onSubmit} />
 };

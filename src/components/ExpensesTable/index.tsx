@@ -1,13 +1,13 @@
 import { Table } from "react-bootstrap";
-import { OrderRow } from "../OrderRow";
-import { OrderTableProps } from "./types";
+import { ExpenseRow } from "../ExpenseRow";
+import { ExpensesTableProps } from "./types";
 
-export const OrderTable = ({ orders }: OrderTableProps) => {
+export const ExpensesTable = ({ orders }: ExpensesTableProps) => {
     return (
         <Table striped bordered hover>
           <tbody>
             {orders.map((order, index) => (
-              <OrderRow key={index} order={order} />
+              <ExpenseRow key={index} order={order} />
             ))}
           </tbody>
         </Table>

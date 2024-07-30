@@ -1,7 +1,7 @@
 import { convertDateString, formatAmount } from "../../Helper";
-import { OrderRowProps } from "./types";
+import { ExpenseRowProps } from "./types";
 
-export const OrderRow = ({ order }: OrderRowProps) => {
+export const ExpenseRow = ({ order }: ExpenseRowProps) => {
     return (
         <tr>
             <td>

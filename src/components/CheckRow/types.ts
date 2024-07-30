@@ -1,5 +1,5 @@
 import { Deposit } from "../../services/Deposit/types";
 
-export interface DepositRowProps {
+export interface CheckRowProps {
     deposit: Deposit;
 }
